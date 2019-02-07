@@ -12,10 +12,9 @@ class Calculator
     family.rate * hours_of_work
   end
 
-  private
-
   def hours_of_work
-    ((end_time - start_time) / 3600).to_i
+    ((end_time - start_time) / 3600).ceil.to_i
   end
+  private :hours_of_work
 
 end
