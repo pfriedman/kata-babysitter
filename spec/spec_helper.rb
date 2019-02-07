@@ -1,4 +1,5 @@
 require "rspec"
+require "time"
 
 require "simplecov"
 SimpleCov.start

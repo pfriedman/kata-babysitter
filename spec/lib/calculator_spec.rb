@@ -1,5 +1,4 @@
 require "spec_helper"
-require "time"
 
 describe Calculator do
 
@@ -52,6 +51,17 @@ describe Calculator do
       it "returns pay for the full hour" do
         expect(subject.total_pay).to eq 30
       end
+    end
+
+    context "over switch-over hours" do
+
+      let(:start_time) { Time.parse("2019-01-01 10:00PM") }
+      let(:end_time)   { Time.parse("2019-01-02 12:30AM") }
+
+      it "handles changes in rates depending on hours worked" do
+        expect(subject.total_pay).to eq 55
+      end
+
     end
 
   end
