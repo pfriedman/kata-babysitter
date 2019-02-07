@@ -1,7 +1,7 @@
 class Family
 
   def rate
-    0
+    15
   end
 
 end

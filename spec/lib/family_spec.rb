@@ -14,6 +14,7 @@ describe Family do
 
     it "returns an integer" do
       expect(subject.rate).to be_an_instance_of(Integer)
+      expect(subject.rate).to eq 15
     end
 
   end

@@ -9,7 +9,13 @@ class Calculator
   end
 
   def total_pay
-    0
+    family.rate * hours_of_work
+  end
+
+  private
+
+  def hours_of_work
+    ((end_time - start_time) / 3600).to_i
   end
 
 end
