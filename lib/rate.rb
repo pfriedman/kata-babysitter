@@ -38,3 +38,17 @@ class RateB
   end
 
 end
+
+# C pays $21 per hour before 9pm, then $15 the rest of the night
+class RateC
+
+  def for_hour(time)
+    hour = time.hour
+    if hour >= 21 || hour <= 4
+      15
+    else
+      21
+    end
+  end
+
+end
