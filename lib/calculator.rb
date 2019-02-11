@@ -2,18 +2,18 @@ class Calculator
 
   HOUR = 3600
 
-  attr_reader :start_time, :end_time, :family
+  attr_reader :start_time, :end_time, :rate
   
-  def initialize(start_time:, end_time:, family:)
+  def initialize(start_time:, end_time:, rate:)
     @start_time = start_time
     @end_time = end_time
-    @family = family
+    @rate = rate
   end
 
   def total_pay
     pay = 0
     hours_of_work.times do |i|
-      pay += family.rate(hour_worked(i))
+      pay += rate.for_hour(hour_worked(i))
     end
     pay
   end

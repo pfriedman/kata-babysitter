@@ -4,9 +4,10 @@ describe Calculator do
 
   let(:start_time) { Time.parse("2019-01-01 5:00PM") }
   let(:end_time) { Time.parse("2019-01-02 4:00AM") }
-  let(:family) { Family.new }
+  let(:rate_type) { "A" }
+  let(:rate) { Rate.new(rate_type) }
 
-  subject { described_class.new(start_time: start_time, end_time: end_time, family: family) }
+  subject { described_class.new(start_time: start_time, end_time: end_time, rate: rate) }
 
   describe "#new" do
 
@@ -15,7 +16,7 @@ describe Calculator do
     it "sets the attributes on the class" do
       expect(subject.start_time).to eq start_time
       expect(subject.end_time).to eq end_time
-      expect(subject.family).to eq family
+      expect(subject.rate).to eq rate
     end
 
   end

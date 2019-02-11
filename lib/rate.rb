@@ -1,5 +1,4 @@
 class Rate
-
   def initialize(type = "A")
     @rate = Object.const_get("Rate#{type}").new
   end
