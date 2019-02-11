@@ -19,6 +19,31 @@ describe Calculator do
       expect(subject.rate).to eq rate
     end
 
+    context "end time is before start time" do
+
+      let(:start_time) { Time.parse("2019-01-01 6:00PM") }
+      let(:end_time) { Time.parse("2019-01-01 5:00PM") }
+
+      it { expect{ subject }.to raise_error(Calculator::EndTimeBeforeStartTimeError) }
+
+    end
+
+    context "outside allowable work hours" do
+      context "start time before start" do
+        let(:start_time) { Time.parse("2019-01-01 4:59PM") }
+        let(:end_time) { Time.parse("2019-01-01 9:00PM") }
+
+        it { expect{ subject }.to raise_error(Calculator::OutsideAllowableWorkHoursError) }
+      end
+
+      context "end time after end" do
+        let(:start_time) { Time.parse("2019-01-01 9:30PM") }
+        let(:end_time) { Time.parse("2019-01-02 4:01AM") }
+
+        it { expect{ subject }.to raise_error(Calculator::OutsideAllowableWorkHoursError) }
+      end
+    end
+
   end
 
   describe "#total_pay" do
@@ -155,8 +180,6 @@ describe Calculator do
 
       end
     end
-
-
   end
 
 end
